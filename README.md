@@ -30,3 +30,6 @@ Water Shader in demo scene is made by reading this tutorial: https://www.alanzuc
 Water Caustics Effect texture download from: https://opengameart.org/content/water-caustics-effect-small
 
 2D tilemap asset download from: https://www.kenney.nl/assets/platformer-art-requests
+
+## License
+The code is available under the MIT license. See [LICENSE](LICENSE) for details.
