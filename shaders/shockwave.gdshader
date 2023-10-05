@@ -16,12 +16,10 @@ void fragment() {
 	float ring_mask = smoothstep(size-width, size, uv_length) * 
 		(1.0 - smoothstep(size, size+width, uv_length));
 
-	vec2 offset = intensity * ring_mask * -uv;
+	vec2 offset = intensity * ring_mask * -normalize(uv);
 	
 	vec4 screen_color = texture(screen_texture, SCREEN_UV + offset);
 	screen_color.r = texture(screen_texture, SCREEN_UV + offset + chromatic_offset*ring_mask).r;
 	screen_color.b = texture(screen_texture, SCREEN_UV + offset - chromatic_offset*ring_mask).b;
 	COLOR = screen_color;
-	
-	
 }
