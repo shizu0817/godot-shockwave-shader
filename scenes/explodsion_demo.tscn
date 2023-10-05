@@ -1,0 +1,268 @@
+[gd_scene load_steps=19 format=3 uid="uid://ndprs626vlay"]
+
+[ext_resource type="TileSet" uid="uid://b8sxbpa1bo61n" path="res://assets/demo_tile_set.tres" id="1_q4dme"]
+[ext_resource type="PackedScene" uid="uid://d2ux3pem0npq2" path="res://scenes/shockwave_effect.tscn" id="2_d3lkn"]
+[ext_resource type="Shader" path="res://shaders/shockwave.gdshader" id="3_cd1cd"]
+
+[sub_resource type="Gradient" id="Gradient_2ydk2"]
+colors = PackedColorArray(0.7195, 0.49, 1, 1, 0.3, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ixluy"]
+gradient = SubResource("Gradient_2ydk2")
+
+[sub_resource type="Curve" id="Curve_is478"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.420408, 0.442105), 0.0, 0.0, 0, 0, Vector2(0.730612, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jaxnn"]
+curve = SubResource("Curve_is478")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cxdo2"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 100, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_min = -500.0
+radial_accel_max = 200.0
+scale_curve = SubResource("CurveTexture_jaxnn")
+color_ramp = SubResource("GradientTexture1D_ixluy")
+
+[sub_resource type="Gradient" id="Gradient_naqau"]
+offsets = PackedFloat32Array(0.807692, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_subb0"]
+gradient = SubResource("Gradient_naqau")
+width = 6
+height = 6
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lvlbk"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sl3w6"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.980392, 0.803922, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_m46rs"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ch1j8"]
+gradient = SubResource("Gradient_m46rs")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.6)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7oxo"]
+resource_local_to_scene = true
+shader = ExtResource("3_cd1cd")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/size = 0.0
+shader_parameter/width = 0.05
+shader_parameter/intensity = 0.0
+shader_parameter/chromatic_offset = 0.0
+
+[sub_resource type="Animation" id="Animation_vfmxv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D3:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShockwaveEffect/EffectSprite:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShockwaveEffect/EffectSprite:material:shader_parameter/intensity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShockwaveEffect/EffectSprite:material:shader_parameter/chromatic_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ma715"]
+resource_name = "explosion"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D3:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShockwaveEffect/EffectSprite:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.55, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.2, 0.2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShockwaveEffect/EffectSprite:material:shader_parameter/intensity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShockwaveEffect/EffectSprite:material:shader_parameter/chromatic_offset")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.55, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.02, 0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v5jax"]
+_data = {
+"RESET": SubResource("Animation_vfmxv"),
+"explosion": SubResource("Animation_ma715")
+}
+
+[node name="ExplodsionDemo" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_q4dme")
+format = 2
+layer_0/name = "Bg"
+layer_0/tile_data = PackedInt32Array(0, 65539, 65538, 65536, 65539, 65538, 131072, 65539, 65538, 196608, 65539, 65538, 1, 65539, 65538, 65537, 65539, 65538, 131073, 65539, 65538, 196609, 65539, 65538, 2, 65539, 65538, 65538, 65539, 65538, 131074, 65539, 65538, 196610, 65539, 65538, 3, 65539, 65538, 65539, 65539, 65538, 131075, 65539, 65538, 196611, 65539, 65538, 4, 65539, 65538, 65540, 65539, 65538, 131076, 65539, 65538, 196612, 65539, 65538, 262144, 65539, 65538, 327680, 65539, 65538, 393216, 65539, 65538, 458752, 65539, 65538, 262145, 65539, 65538, 327681, 65539, 65538, 393217, 65539, 65538, 458753, 65539, 65538, 262146, 65539, 65538, 327682, 65539, 65538, 393218, 65539, 65538, 458754, 65539, 65538, 262147, 65539, 65538, 327683, 65539, 65538, 393219, 65539, 65538, 458755, 65539, 65538, 262148, 65539, 65538, 327684, 65539, 65538, 393220, 65539, 65538, 458756, 65539, 65538, 5, 65539, 65538, 65541, 65539, 65538, 131077, 65539, 65538, 196613, 65539, 65538, 262149, 65539, 65538, 327685, 65539, 65538, 393221, 65539, 65538, 458757, 65539, 65538, 6, 65539, 65538, 65542, 65539, 65538, 131078, 65539, 65538, 196614, 65539, 65538, 262150, 65539, 65538, 327686, 65539, 65538, 393222, 65539, 65538, 458758, 65539, 65538, 7, 65539, 65538, 65543, 65539, 65538, 131079, 65539, 65538, 196615, 65539, 65538, 262151, 65539, 65538, 327687, 65539, 65538, 393223, 65539, 65538, 458759, 65539, 65538)
+layer_1/name = "Front"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(-65536, 786435, 3, 0, 655363, 3, 327680, 393219, 1, 393216, 65539, 2, 458752, 65539, 2, -65535, 786435, 3, 1, 589827, 3, 262145, 131075, 4, 327681, 65539, 2, 393217, 131075, 2, 458753, 65539, 2, -65534, 786435, 3, 2, 786435, 4, 262146, 131075, 4, 327682, 65539, 2, 393218, 65539, 2, 458754, 65539, 2, -65533, 786435, 3, 262147, 131075, 65540, 327683, 65539, 2, 393219, 131075, 2, 458755, 65539, 2, -65532, 786435, 3, 262148, 131075, 4, 327684, 65539, 2, 393220, 65539, 2, 458756, 65539, 2, -65531, 786435, 3, 5, 786435, 4, 262149, 131075, 65540, 327685, 65539, 2, 393221, 65539, 2, 458757, 65539, 2, -65530, 786435, 3, 6, 655363, 3, 327686, 327683, 1, 393222, 131075, 2, 458758, 65539, 2, -65529, 786435, 3, 7, 589827, 3, 393223, 65539, 2, 458759, 65539, 2)
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(276, 264)
+emitting = false
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_cxdo2")
+texture = SubResource("GradientTexture2D_subb0")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.5
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_lvlbk")
+position = Vector2(276, 264)
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_sl3w6")
+texture = SubResource("GradientTexture2D_ch1j8")
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.5
+
+[node name="ShockwaveEffect" parent="." instance=ExtResource("2_d3lkn")]
+position = Vector2(275, 263)
+
+[node name="EffectSprite" parent="ShockwaveEffect" index="1"]
+material = SubResource("ShaderMaterial_a7oxo")
+
+[node name="AnimationPlayer" parent="ShockwaveEffect" index="2"]
+autoplay = ""
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "explosion"
+libraries = {
+"": SubResource("AnimationLibrary_v5jax")
+}
+
+[editable path="ShockwaveEffect"]

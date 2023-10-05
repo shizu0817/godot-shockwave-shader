@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm7bgv7etpo0w"]
+
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_kkdev"]
+[ext_resource type="Texture2D" uid="uid://bh2r473ege6av" path="res://assets/caust_004.png" id="2_huo04"]
+[ext_resource type="Script" path="res://scripts/shockwave_spawner.gd" id="3_cfful"]
+[ext_resource type="PackedScene" uid="uid://d2ux3pem0npq2" path="res://scenes/shockwave_effect.tscn" id="4_li4og"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkd77"]
+shader = ExtResource("1_kkdev")
+shader_parameter/color1 = Color(0.152941, 0.619608, 1, 1)
+shader_parameter/color2 = Color(0.835294, 1, 0.815686, 1)
+shader_parameter/water_text = ExtResource("2_huo04")
+
+[node name="MultipleShockwavesDemo" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_xkd77")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.521569, 0.921569, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ShockwaveSpawner" type="Node2D" parent="."]
+script = ExtResource("3_cfful")
+shockwave_scene = ExtResource("4_li4og")
+max_spawn_interval = 0.2
