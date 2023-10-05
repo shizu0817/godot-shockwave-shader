@@ -1,8 +1,8 @@
 # godot shockwave shader
 shockwave shader for godot4, shader effects is shown in the images below.
 <p align="center">
- <img src="https://github.com/shizu0817/godot-shockwave-shader/assets/54024777/91370bd6-e637-4399-8752-abcdc3d53b64" width="40%"/>
- <img src="https://github.com/shizu0817/godot-shockwave-shader/assets/54024777/4feedfbd-639e-4d39-b677-186714947204" width="40%"/>
+ <img src="https://github.com/shizu0817/godot-shockwave-shader/assets/54024777/1d2857a8-ce0e-4ffe-9f75-0de53416d010" width="40%"/>
+ <img src="https://github.com/shizu0817/godot-shockwave-shader/assets/54024777/e20988d0-ecdb-4b82-80c1-554b31b76f98" width="40%"/>
 </p>
 
 ## How to use
